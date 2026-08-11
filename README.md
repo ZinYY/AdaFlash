@@ -8,7 +8,7 @@
 # AdaFlash: Adaptive Speculative Decoding via On-Policy Distilled Diffusion Drafters
 
 [![Paper](https://img.shields.io/badge/Paper-arXiv%3A2607.19223-b31b1b.svg)](https://arxiv.org/abs/2607.19223)
-[![Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-Qwen3--8B--AdaFlash-yellow)](https://huggingface.co/AdaFlash/Qwen3-8B-PerfectBlend)
+[![Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-Qwen3--8B--AdaFlash-yellow)](https://huggingface.co/AdaFlash/Qwen3-8B-AdaFlash)
 [![SGLang](https://img.shields.io/badge/Serving-SGLang-6f42c1.svg)](https://github.com/sgl-project/sglang)
 
 </div>
@@ -58,7 +58,7 @@ pip install -r requirements.txt
 
 | Target model | AdaFlash drafter | Training data | Description |
 |---|---|---|---|
-| [Qwen3-8B](https://huggingface.co/Qwen/Qwen3-8B) | [Qwen3-8B-PerfectBlend](https://huggingface.co/AdaFlash/Qwen3-8B-PerfectBlend) | PerfectBlend | On-policy mixture reverse-KL loss drafter with an adaptive length head |
+| [Qwen3-8B](https://huggingface.co/Qwen/Qwen3-8B) | [Qwen3-8B-AdaFlash](https://huggingface.co/AdaFlash/Qwen3-8B-AdaFlash) | PerfectBlend | On-policy mixture reverse-KL loss drafter with an adaptive length head |
 
 ## 🚀 Quick Start
 
