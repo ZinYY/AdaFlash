@@ -9,7 +9,7 @@
 
 [![Paper](https://img.shields.io/badge/Paper-arXiv%3A2607.19223-b31b1b.svg)](https://arxiv.org/abs/2607.19223)
 [![Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-Qwen3--8B--AdaFlash-yellow)](https://huggingface.co/AdaFlash/Qwen3-8B-AdaFlash)
-[![SGLang](https://img.shields.io/badge/Serving-SGLang-6f42c1.svg)](https://github.com/sgl-project/sglang)
+[![SGLang](https://img.shields.io/badge/Serving_Engine-SGLang-6f42c1.svg)](https://github.com/sgl-project/sglang/pull/34171)
 
 </div>
 
@@ -39,8 +39,6 @@ Official implementation of [AdaFlash](https://arxiv.org/abs/2607.19223), a frame
 
 ## 📦 Installation
 
-### Requirements
-
 Create a dedicated environment and install the patched SGLang version used by this repository:
 
 ```bash
@@ -58,7 +56,7 @@ pip install -r requirements.txt
 
 | Target model | AdaFlash drafter | Training data | Description |
 |---|---|---|---|
-| [Qwen3-8B](https://huggingface.co/Qwen/Qwen3-8B) | [Qwen3-8B-AdaFlash](https://huggingface.co/AdaFlash/Qwen3-8B-AdaFlash) | PerfectBlend | On-policy mixture reverse-KL loss drafter with an adaptive length head |
+| [Qwen3-8B](https://huggingface.co/Qwen/Qwen3-8B) | [Qwen3-8B-AdaFlash](https://huggingface.co/AdaFlash/Qwen3-8B-AdaFlash) | PerfectBlend | On-policy mixture reverse-KL loss drafter with an adaptive length head. Initialized from [DFlash's checkpoint](https://huggingface.co/z-lab/Qwen3-8B-DFlash-b16). |
 
 ## 🚀 Quick Start
 
@@ -138,7 +136,7 @@ export LOG_DIR="$PWD/logs/qwen3_8b_adaflash"
 bash scripts/pipeline/run_async_pipeline_adaflash.sh "0" "1,2"
 ```
 
-## Benchmarking Baselines
+## 📈 Benchmarking Baselines
 
 The repository includes serving scripts for the following methods:
 
@@ -152,11 +150,11 @@ The repository includes serving scripts for the following methods:
 
 The one-command AdaFlash benchmark uses `scripts/tools/benchmark.sh`. For controlled two-terminal experiments, launch a server with one of the scripts above and run `python bin/benchmark.py` against its `/generate` endpoint. Detailed model paths, datasets, concurrency settings, and evaluation options are listed in [docs/benchmark_experiments.md](docs/benchmark_experiments.md).
 
-## Acknowledgments
+## 🙏 Acknowledgments
 
 AdaFlash builds on the excellent open-source ecosystems around [SGLang](https://github.com/sgl-project/sglang), [SpecForge](https://github.com/sgl-project/SpecForge), and DFlash. The vendored SpecForge subset retains its upstream MIT license in [specforge/LICENSE](specforge/LICENSE).
 
-## Citation
+## 📖 Citation
 
 If you find AdaFlash useful in your research, please cite our paper:
 
