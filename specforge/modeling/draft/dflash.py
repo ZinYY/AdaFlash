@@ -4,6 +4,8 @@
 # Full attribution and license: asyn_train/specforge/VENDOR_README.md
 # ------------------------------------------------------------------------------
 
+import json
+from pathlib import Path
 from typing import Callable, Optional
 
 import torch
@@ -332,6 +334,9 @@ def extract_context_feature(
     return target_hidden
 
 
+ADAFLASH_ARCHITECTURE = "DFlashAdaFlashDraftModel"
+
+
 class DFlashDraftModel(Qwen3PreTrainedModel):
     config_class = Qwen3Config
     _no_split_modules = ["Qwen3DFlashDecoderLayer"]
@@ -418,6 +423,16 @@ class DFlashDraftModel(Qwen3PreTrainedModel):
             prob_logits = self.prob_head(hidden_states)
 
         return hidden_states, prob_logits
+
+    def save_pretrained(self, save_directory, *args, **kwargs):
+        super().save_pretrained(save_directory, *args, **kwargs)
+        if self.use_thresh_head_two_model:
+            # transformers stamps the class name; AdaFlash checkpoints declare their own
+            # architecture so that vLLM / SGLang load them as AdaFlash drafters.
+            config_path = Path(save_directory) / "config.json"
+            config = json.loads(config_path.read_text())
+            config["architectures"] = [ADAFLASH_ARCHITECTURE]
+            config_path.write_text(json.dumps(config, indent=2, sort_keys=True) + "\n")
 
     def thresh_head_forward(self, hidden_states, logits):
         """Run threshold head(s) on draft output. Returns threshold tensor or None."""

@@ -1,6 +1,6 @@
 {
   "architectures": [
-    "DFlashDraftModel"
+    "DFlashAdaFlashDraftModel"
   ],
   "attention_bias": false,
   "attention_dropout": 0.0,
